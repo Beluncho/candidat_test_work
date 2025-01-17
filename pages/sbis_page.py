@@ -40,11 +40,10 @@ class SbisPage(BasePage):
                                                                     # делать переход
 
         assert self.element_is_visible(Locators.REGION),'NotFoundRegions'
-
-        assert self.element_is_visible(Locators.REGION).text == "Ярославская обл.", 'IncorrectTextRegion'
         assert self.element_is_visible(Locators.PARTNERS_TABLE), 'NotFoundPartnersTable'
         assert self.element_is_visible(Locators.PARTNERS), 'NotFoundPartners'
         assert self.element_is_visible(Locators.PARTNERS).text == 'Ярославль', 'IncorrectTextPartners'
+        assert self.element_is_visible(Locators.REGION).text == "Ярославская обл.", 'IncorrectTextRegion'
 
         self.element_is_clickable(Locators.REGION).click()
 
@@ -56,13 +55,13 @@ class SbisPage(BasePage):
 
 # TODO: нестабильное место в тесте, как заменить time.sleep?..
 
-        time.sleep(15)
+        # time.sleep(15)
         self.element_is_clickable(Locators.REGION)
-        assert self.element_is_visible(Locators.REGION).text == 'Камчатский край','IncorrectTextRegionKamchatka'
+
         assert self.element_is_visible(Locators.PARTNERS_TABLE), 'NotFoundPartnersTable'
         assert self.element_is_visible(Locators.PARTNERS).text == 'Петропавловск-Камчатский',\
                                                                                 'IncorrectTextPartnersKamchatka'
-
+        assert self.element_is_visible(Locators.REGION).text == 'Камчатский край', 'IncorrectTextRegionKamchatka'
         assert self.driver.current_url == 'https://saby.ru/contacts/41-kamchatskij-kraj?tab=clients', 'NotCurrentUrl'
 
         assert self.element_is_presence(Locators.TITLE), 'TitleIsNotPresent'
